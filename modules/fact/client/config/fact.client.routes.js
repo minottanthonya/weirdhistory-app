@@ -11,7 +11,7 @@
   function routeConfig($stateProvider) {
     // Fact state routing
     $stateProvider
-      .state('fact-list', {
+      .state('facts', {
         url: '/fact',
         templateUrl: 'modules/fact/client/views/fact-list.client.view.html',
         controller: 'FactsController',
