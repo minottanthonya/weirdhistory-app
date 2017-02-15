@@ -8,6 +8,6 @@ angular.module('fact').run(['Menus',
 		title:'History Facts',
 		state:'facts',
 		roles:['*']
-	});
+	  });
   }
 ]);
