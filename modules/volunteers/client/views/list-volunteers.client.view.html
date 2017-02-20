@@ -1,0 +1,25 @@
+<section>
+  <div class="page-header">
+    <h1><img src="modules/core/client/img/white-house-icon.png" /> Weird History Volunteers</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="volunteer in vm.volunteers" 
+       ng-if="vm.user._id == volunteer.user._id"
+       ui-sref="volunteers.view({ volunteerId: volunteer._id })"
+       class="list-group-item">
+       <h3>{{volunteer.firstname}} {{volunteer.lastname}}</h3>
+       <h4>{{volunteer.position}}</h4>
+      <small class="list-group-item-text">
+        Created on
+        <span ng-bind="volunteer.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="volunteer.user" ng-bind="volunteer.user.displayName"></span>
+        <span ng-if="!volunteer.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="volunteer.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.volunteers.$resolved && !vm.volunteers.length">
+    No volunteers yet, why don't you <a ui-sref="volunteers.create">create one</a>?
+  </div>
+</section>

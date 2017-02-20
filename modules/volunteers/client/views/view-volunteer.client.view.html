@@ -1,0 +1,34 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.volunteer.firstname}} {{vm.volunteer.lastname}}</h1>
+    <h3>{{vm.volunteer.position}}</h3>
+    <hr/>
+    <h4>Phone number: <span ng-bind="vm.volunteer.phone"></span></h4>
+    <h4>Email: <span ng-bind="vm.volunteer.email"></span></h4>
+    <h4>Address: {{vm.volunteer.address}}, {{vm.volunteer.city}}, {{vm.volunteer.state}} {{vm.volunteer.zip}}</h4>
+    <h4>Birthdate: {{vm.volunteer.birthdate | date: 'mediumDate'}}</h4>
+    <h4>Start Date: <span ng-bind="vm.volunteer.startdate | date:'mediumDate'"></span></h4>
+    <!-- <p>{{vm.volunteer}}</p> -->
+  </div>
+  <div class="pull-right"
+       ng-show="vm.volunteer.isCurrentUserOwner">
+    <a class="btn btn-info"
+       ui-sref="volunteers.edit({ volunteerId: vm.volunteer._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-danger" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Created on
+      <span ng-bind="vm.volunteer.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.volunteer.user"
+            ng-bind="vm.volunteer.user.displayName"></span>
+      <span ng-if="!vm.volunteer.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.volunteer.content"></p>
+</section>
