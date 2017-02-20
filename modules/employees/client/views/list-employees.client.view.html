@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1><img src="modules/core/client/img/sydney-opera-house.png" /> Wierd History Employees</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="employee in vm.employees"
+       ng-if="vm.user._id == employee.user._id"
+       ui-sref="employees.view({ employeeId: employee._id })"
+       class="list-group-item">
+       <h3>{{employee.firstname}} {{employee.lastname}}</h3>
+       <h4>{{employee.position}}</h4>
+      <small class="list-group-item-text">
+      <!-- <p>{{employee}}</p> -->
+        Created on
+        <span ng-bind="employee.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="employee.user" ng-bind="employee.user.displayName"></span>
+        <span ng-if="!employee.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="employee.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.employees.$resolved && !vm.employees.length">
+    No employees yet, why don't you <a ui-sref="employees.create">create one</a>?
+  </div>
+</section>
